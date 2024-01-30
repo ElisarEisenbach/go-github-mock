@@ -65,7 +65,7 @@ func WithRequestMatch(
 		}
 	}
 
-	return WithRequestMatchHandler(ep, &FIFOReponseHandler{
+	return WithRequestMatchHandler(ep, &FIFOResponseHandler{
 		Responses: responses,
 	})
 }

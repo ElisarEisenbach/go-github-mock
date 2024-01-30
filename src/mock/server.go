@@ -22,18 +22,18 @@ type EndpointPattern struct {
 // for the mocked backend
 type MockBackendOption func(*mux.Router)
 
-// FIFOReponseHandler handler implementation that
+// FIFOResponseHandler handler implementation that
 // responds to the HTTP requests following a FIFO approach.
 //
 // Once all available `Responses` have been used, this handler will panic()!
-type FIFOReponseHandler struct {
+type FIFOResponseHandler struct {
 	lock         sync.Mutex
 	Responses    [][]byte
 	CurrentIndex int
 }
 
 // ServeHTTP implementation of `http.Handler`
-func (srh *FIFOReponseHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (srh *FIFOResponseHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	srh.lock.Lock()
 	defer srh.lock.Unlock()
 
